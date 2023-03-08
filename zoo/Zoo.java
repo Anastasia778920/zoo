@@ -3,7 +3,6 @@ package zoo;
 import animals.Lion;
 import animals.Snake;
 import animals.Wolf;
-import Cage.AnimalCage;
 
 public class Zoo {
     private AnimalCage<Wolf> wolfCage;
@@ -16,6 +15,54 @@ public class Zoo {
         this.snakeCage = snakeTerrarium;
     }
 
+    public Snake takeOfLion() {
+        if (this.lionCage == null) {
+            return null;
+        } else {
+            return this.lionCage.takeOffAnimal();
+        }
+    }
+
+    public Snake takeOfWolf() {
+        if (this.wolfCage == null) {
+            return null;
+        } else {
+
+            return this.wolfCage.takeOffAnimal();
+        }
+    }
+
+    public Snake takeOfSnake() {
+        if (this.snakeCage == null) {
+            return null;
+        } else {
+            return this.snakeCage.takeOffAnimal();
+        }
+    }
+
+    public int addLion(Lion animal) {
+        if (this.lionCage == null) {
+            return 0;
+        } else {
+            return this.lionCage.addAnimal(animal);
+        }
+    }
+
+    public int addSnake(Lion animal) {
+        if (this.snakeCage == null) {
+            return 0;
+        } else {
+            return this.snakeCage.addAnimal(animal);
+        }
+    }
+
+    public int addWolf(Lion animal) {
+        if (this.wolfCage == null) {
+            return 0;
+        } else {
+            return this.wolfCage.addAnimal(animal);
+        }
+    }
 
     public AnimalCage<Wolf> getWolfCage() {
         return wolfCage;
@@ -39,5 +86,26 @@ public class Zoo {
 
     public void setSnakeTerrarium(AnimalCage<Snake> snakeTerrarium) {
         this.snakeCage = snakeTerrarium;
+    }
+
+    @Override
+    public String toString() {
+        int wolfCount = 0;
+        int snakeCount = 0;
+        int lionCount = 0;
+        if (wolfCage != null) {
+            wolfCount = wolfCage.countAnimals();
+        }
+        if (snakeCage != null) {
+            snakeCount = snakeCage.countAnimals();
+        }
+        if (lionCage != null) {
+            lionCount = lionCage.countAnimals();
+        }
+        return "Zoo{" +
+                "wolves=" + wolfCount +
+                ", lions=" + lionCount +
+                ", snakes=" + snakeCount +
+                '}';
     }
 }
